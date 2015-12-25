@@ -5,7 +5,7 @@
  */
 
 var koa = require('koa');
-var render = require('..');
+var swig = require('..');
 var path = require('path');
 var pkg = require('../package');
 
@@ -19,18 +19,18 @@ var filters = {
   }
 };
 
-app.context.render = render({
-  root: path.join(__dirname, 'views'),
+app.use(swig({
+  views: path.join(__dirname, 'views'),
   ext: 'html',
   locals: locals,
   filters: filters
-});
+}));
 
 app.use(function*() {
-  yield this.render('index', {
+  this.body = yield this.render('index', {
     user: {
-      name: 'fundon',
-      email: 'cfddream@gmail.com'
+      name: 'rockie',
+      email: 'rockie@kitmi.com.au'
     }
   });
 });

@@ -1,7 +1,7 @@
 {
-  "name": "koa-swig",
-  "version": "2.1.0",
-  "description": "Koa view render based on Swig, support tags, filters, and extensions.",
+  "name": "koa-middleware-swig",
+  "version": "1.0.0",
+  "description": "Koa view render middleware based on Swig, supports tags, filters, and extensions. Forked form github.com/koa-modules/swig",
   "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha --harmony -R spec -t 5000 test/*.js",
@@ -14,26 +14,22 @@
     "view",
     "swig",
     "locals",
-    "flash"
+    "middleware"
   ],
-  "author": "fundon <cfddream@gmail.com>",
+  "author": "rockie <rockie@kitmi.com.au>",
   "license": "MIT",
   "devDependencies": {
     "istanbul-harmony": "*",
     "koa": "^1.x",
-    "koa-flash": "^1.x",
-    "koa-session": "^3.x",
     "mocha": "^2.x",
     "should": "^7.x",
     "supertest": "^1.x"
   },
   "dependencies": {
-    "debug": "^2.x",
     "swig": "^1.4.2",
-    "thenify": "^3.1.0",
-    "utils-merge": "^1.0.0"
+    "underscore": "^1.8.3"
   },
-  "repository": "koa-modules/swig",
+  "repository": "kitmi/swig",
   "files": [
     "index.js"
   ]
