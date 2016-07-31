@@ -48,22 +48,27 @@ module.exports = function (opt) {
     opt.tags && (_.each(opt.tags, (tag, name) => swig.setTag(name, tag.parse, tag.compile, tag.ends, tag.blockLevel)));
     opt.extensions && (_.each(opt.extensions, (extension, name) => swig.setExtension(name, extension)));
 
+    function* render(view, locals) {
+        // extname
+        let e = path.extname(view);
+
+        if (!e) {
+            view += '.' + opt.ext;
+        }
+
+        // resolve
+        view = path.resolve(opt.views, view);
+
+        if (this.swigLocals) {
+            locals = Object.assign(this.swigLocals, locals);
+        }
+
+        return yield (done => swig.renderFile(view, locals, done));
+    }
+
     return function* (next) {
         this.swig = swig;
-
-        this.render = function* render(view, locals) {
-            // extname
-            let e = path.extname(view);
-
-            if (!e) {
-                view += '.' + opt.ext;
-            }
-
-            // resolve
-            view = path.resolve(opt.views, view);
-
-            return yield (done => swig.renderFile(view, locals, done));
-        };
+        this.render = render;
 
         yield next;
 
