@@ -1,6 +1,6 @@
 {
   "name": "koa-middleware-swig",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Koa view render middleware based on Swig, supports tags, filters, and extensions. Forked form github.com/koa-modules/swig",
   "main": "index.js",
   "scripts": {
@@ -26,8 +26,8 @@
     "supertest": "^1.x"
   },
   "dependencies": {
-    "swig": "^1.4.2",
-    "underscore": "^1.8.3"
+    "swig-templates": "^2.0.2",
+    "lodash": "^4.17.4 "
   },
   "repository": "kitmi/swig",
   "files": [

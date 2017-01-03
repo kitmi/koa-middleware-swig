@@ -6,9 +6,9 @@
  * MIT Licensed
  */
 
-const _ = require('underscore');
+const _ = require('lodash');
 const path = require('path');
-const Swig = require('swig').Swig;
+const Swig = require('swig-templates').Swig;
 
 /**
  * Expose swig middleware
@@ -59,8 +59,8 @@ module.exports = function (opt) {
         // resolve
         view = path.resolve(opt.views, view);
 
-        if (this.swigLocals) {
-            locals = Object.assign(this.swigLocals, locals);
+        if (this.viewState) {
+            locals = Object.assign({}, this.viewState, locals);
         }
 
         return yield (done => swig.renderFile(view, locals, done));
